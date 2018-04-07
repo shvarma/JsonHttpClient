@@ -33,10 +33,7 @@ import org.json.JSONObject;
 import com.jayway.jsonpath.JsonPath;
 
 
-/**
- * Simple class to launch a jenkins build on run@Cloud platform, should also work on every jenkins instance (not tested)
- *
- */
+
 public class TestPreemptive {
 
 	public static void main(String[] args) throws JSONException {
