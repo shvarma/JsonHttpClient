@@ -38,29 +38,20 @@ public class TestPreemptive {
 
 	public static void main(String[] args) throws JSONException {
 		// Credentials
-//		String username = "admin";
-//		String password = "Desire@2014";
-		
-		String username = "harishs";
+		String username = "admin";
 		String password = "Desire@2014";
 
-
 		// Jenkins url
-//		String jenkinsUrl = "http://localhost:8080/";
-		String jenkinsUrl = "http://192.168.168.207:8080/";
+		String jenkinsUrl = "http://localhost:8080/";
 
 		// Build name
-//		String jobName = "JOB";
-		String jobName = "01_ET";
-
+		String jobName = "JOB";
 
 		// Build token
-//		String buildToken = "FIRST_BUILD";
-		String buildToken = "ET1";
+		String buildToken = "FIRST_BUILD";
 
 		// Create your httpclient
 		DefaultHttpClient client = new DefaultHttpClient();
-		DefaultHttpClient client1 = new DefaultHttpClient();
 
 		// Then provide the right credentials
 		client.getCredentialsProvider().setCredentials(new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
@@ -93,16 +84,12 @@ public class TestPreemptive {
 		getUrl = jenkinsUrl + "/job/" + jobName + "/build?token=" + buildToken;
 		
 		HttpGet get = new HttpGet(getUrl);
-		HttpGet get1 = new HttpGet(getUrl);
 //		get.setHeader("Content-type","application/json");
 		get.setHeader("Content-type","application/xml");
-		get1.setHeader("Content-type","application/xml");
 
 		try {
 			// Execute your request with the given context
 			HttpResponse response = client.execute(get, context);
-			@SuppressWarnings("unused")
-			HttpResponse response1 = client1.execute(get1, context1);
 			HttpEntity entity = response.getEntity();			
 			String jsonString = EntityUtils.toString(entity);
 			System.out.println("JSON reponse: \n" + jsonString);
